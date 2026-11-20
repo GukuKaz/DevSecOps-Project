@@ -1,3 +1,4 @@
+
 resource "azurerm_kubernetes_cluster" "aks" {
   name                = var.cluster_name
   location            = azurerm_resource_group.rg.location
@@ -18,8 +19,11 @@ resource "azurerm_kubernetes_cluster" "aks" {
     network_policy = "azure"
   }
 
+  # Default Node Pool
   default_node_pool {
-    name       = "default"
+    name                        = "default"
+    temporary_name_for_rotation = "tempdefault"
+
     node_count = var.node_count
     vm_size    = var.vm_size
 
@@ -30,11 +34,19 @@ resource "azurerm_kubernetes_cluster" "aks" {
     }
   }
 
+  # Managed Identity
   identity {
     type = "SystemAssigned"
   }
 
+  # Manual Node Provisioning
   node_provisioning_profile {
     mode = "Manual"
+  }
+
+  tags = {
+    Environment = var.environment
+    ManagedBy   = "Terraform"
+    Project     = "DevSecOps"
   }
 }

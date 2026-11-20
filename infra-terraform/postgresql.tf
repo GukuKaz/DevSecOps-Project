@@ -1,6 +1,6 @@
 # PostgreSQL Flexible Server
 resource "azurerm_postgresql_flexible_server" "postgres" {
-  name                   = "psql-${var.environment}-${var.cluster_name}"
+  name                   = "psql-${var.environment}-${var.cluster_name}-2026"
   resource_group_name    = azurerm_resource_group.rg.name
   location               = azurerm_resource_group.rg.location
   version                = var.postgresql_version

@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: learningsteps-api
-          image: acrwesteudora.azurecr.io/learningsteps-api:latest
+          image: acrwesteudoraa2346wtuh.azurecr.io/learningsteps-api:v1
           imagePullPolicy: Always
           ports:
             - containerPort: 8000

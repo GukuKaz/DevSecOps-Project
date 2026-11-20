@@ -22,7 +22,7 @@ variable "node_count" {
 variable "vm_size" {
   description = "VM size for nodes"
   type        = string
-  default     = "Standard_D2s_v3"
+  default     = "Standard_D2s_v6"
 }
 
 variable "subscription_id" {
