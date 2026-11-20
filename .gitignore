@@ -40,3 +40,14 @@ Thumbs.db
 CLAUDE.md
 .claude
 CONTEXT.md
+# Terraform sensitive files
+**/*.tfvars
+**/*.tfvars.json
+**/*.tfstate
+**/*.tfstate.*
+**/.terraform/
+
+# Environment secrets
+.env
+.env.*
+!.env.example
