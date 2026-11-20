@@ -45,6 +45,20 @@ jobs:
           exit-code: "1"
           severity: "CRITICAL,HIGH"
 
+      - name: Debug workflow configuration
+        run: |
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "GITHUB_WORKFLOW_SHA=$GITHUB_WORKFLOW_SHA"
+          echo "GITHUB_WORKFLOW_REF=$GITHUB_WORKFLOW_REF"
+          echo "Current branch:"
+          git branch --show-current
+          echo "Current commit:"
+          git rev-parse HEAD
+          echo "tfsec configuration:"
+          grep -n -A5 -B2 'tfsec-action' .github/workflows/infra-pipeline.yml
+          echo "Search for tfvars-file:"
+          grep -Rni --exclude-dir=.git --exclude-dir=.terraform 'tfvars-file' . || true
+          
       - name: Run tfsec security scanner
         uses: aquasecurity/tfsec-action@v1.0.0
         with:
