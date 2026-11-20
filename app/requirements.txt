@@ -6,3 +6,4 @@ sqlalchemy
 psycopg2-binary
 asyncpg
 prometheus-client
+requests==2.20.0
